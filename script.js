@@ -112,14 +112,13 @@ document.getElementById("myPara").innerHTML = name + ", your total is $" + total
 //         c) Uncheck ALL topping checkboxes (loop through them)
 //         d) Set the service dropdown value to "dinein"
 //         e) Set the output paragraph innerHTML to ""
-const clearBtn = document.getElementById("clearBtn");
-clearBtn.addEventListener("click", function() {
+document.getElementById("clearBtn").addEventListener("click", function() {
     document.getElementById("myInput").value = "";
     document.getElementById("r3").checked = true;
-    const checkboxes = document.querySelectorAll("input[type='checkbox']");
-    checkboxes.forEach(function(checkbox) {
-        checkbox.checked = false;
-    });
-    document.getElementById("service").value = "dinein";
-    document.getElementById("output").innerHTML = "";
+    const toppings = document.getElementsByName("cb");
+    for (let i = 0; i < toppings.length; i++) {
+        toppings[i].checked = false;
+    }
+    document.getElementById("serviceSelect").value = "dinein";
+    document.getElementId("myPara").innerHTML = "";
 });
