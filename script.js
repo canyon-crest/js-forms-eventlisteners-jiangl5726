@@ -46,13 +46,20 @@ document.getElementById("btnShout").addEventListener('click', function (){
 // STEP 3: Get the "Calculate Total" button by ID ("btnCalc")
 //         Add a click event listener.
 //         Inside the listener:
-
+document.getElementById("btnCalc").addEventListener("click", function() {
 //   a) Get the selected size price:
 //      Use document.getElementsByName("rg") to get all
 //      size radio buttons. Loop through them to find the
 //      one that is .checked, and read its .value.
 //      Convert to a number with parseFloat().
-
+let sizePrice = 0;
+const sizes = document.getElementsByName("rg");
+for (let i = 0; i < size.length; i++) {
+    if (sizes[i].checked) {
+        sizePrice = parseFloat(sizes[i].value);
+        break;
+    }
+}
 //   b) Count checked toppings:
 //      Use document.getElementsByName("cb") to get all
 //      topping checkboxes. Loop through and count how
@@ -60,8 +67,11 @@ document.getElementById("btnShout").addEventListener('click', function (){
 let price = 0;
 const toppings = document.getElementsByName('cb');
 for(let i = 0; i < toppings.length; i++){
-price += .5;
+if (toppings[i].checked) {
+    toppingsCount++;
 }
+}
+const toppingsPrice = price * 0.50;
 //   c) Get the service fee:
 //      Use document.getElementById("serviceSelect").value
 //      to get the selected option value ("dinein", "takeout",
@@ -70,18 +80,30 @@ price += .5;
 //        "dinein"   → 0
 //        "takeout"  → 1.50
 //        "delivery" → 3.00
+const serviceValue = document.getElementById("serviceSelect").value;
+serviceFee = 0;
 
+if (serviceValue === "dinein") {
+    serviceFee = 0;
+} else if (serviceValue === "takeout") {
+    serviceFee = 1.50;
+} else if (serviceValue === "delivery") {
+    serviceFee = 3.00;
+}
 //   d) Calculate total: size + toppings + service fee
-
+const total = sizePrice + toppingsPrice + serviceFee;
 //   e) Get the customer name from the input with ID "myInput"
-
+let name = document.getElementById("myInput").value;
+if (name === "") {
+    name = "Customer";
+}
 //   f) Display the result in the element with ID "myPara":
 //      "[name], your total is $[total]"
 //      Use .toFixed(2) to format the total.
 //      Example: "Alice, your total is $13.50"
 //      If name is empty, use "Customer" as the default.
-
-
+document.getElementById("myPara").innerHTML = name + ", your total is $" + total.toFixed(2);
+});
 // STEP 4: Get the "Clear" button by ID ("clearBtn")
 //         Add a click event listener.
 //         Inside the listener:
