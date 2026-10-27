@@ -54,7 +54,7 @@ document.getElementById("btnCalc").addEventListener("click", function() {
 //      Convert to a number with parseFloat().
 let sizePrice = 0;
 const sizes = document.getElementsByName("rg");
-for (let i = 0; i < size.length; i++) {
+for (let i = 0; i < sizes.length; i++) {
     if (sizes[i].checked) {
         sizePrice = parseFloat(sizes[i].value);
         break;
@@ -68,7 +68,7 @@ let price = 0;
 const toppings = document.getElementsByName('cb');
 for(let i = 0; i < toppings.length; i++){
 if (toppings[i].checked) {
-    toppingsCount++;
+    price++;
 }
 }
 const toppingsPrice = price * 0.50;
@@ -112,3 +112,14 @@ document.getElementById("myPara").innerHTML = name + ", your total is $" + total
 //         c) Uncheck ALL topping checkboxes (loop through them)
 //         d) Set the service dropdown value to "dinein"
 //         e) Set the output paragraph innerHTML to ""
+const clearBtn = document.getElementById("clearBtn");
+clearBtn.addEventListener("click", function() {
+    document.getElementById("name").value = "";
+    document.getElementById("r3").checked = true;
+    const checkboxes = document.querySelectorAll("input[type='checkbox']");
+    checkboxes.forEach(function(checkbox) {
+        checkbox.checked = false;
+    });
+    document.getElementById("service").value = "dinein";
+    document.getElementById("output").innerHTML = "";
+});
