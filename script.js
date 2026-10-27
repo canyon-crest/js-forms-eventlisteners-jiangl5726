@@ -120,5 +120,4 @@ document.getElementById("clearBtn").addEventListener("click", function() {
         toppings[i].checked = false;
     }
     document.getElementById("serviceSelect").value = "dinein";
-    document.getElementId("myPara").innerHTML = "";
-});
+    document.getElementId("myPara").textContent = "";
