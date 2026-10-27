@@ -114,7 +114,7 @@ document.getElementById("myPara").innerHTML = name + ", your total is $" + total
 //         e) Set the output paragraph innerHTML to ""
 const clearBtn = document.getElementById("clearBtn");
 clearBtn.addEventListener("click", function() {
-    document.getElementById("name").value = "";
+    document.getElementById("myInput").value = "";
     document.getElementById("r3").checked = true;
     const checkboxes = document.querySelectorAll("input[type='checkbox']");
     checkboxes.forEach(function(checkbox) {
